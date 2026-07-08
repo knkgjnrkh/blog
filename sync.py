@@ -1,21 +1,23 @@
 # -*- coding: utf-8 -*-
 """
-把 blog 根目录里的 .md 笔记和 .assets 图片文件夹同步到 docs/ 目录，
-并自动生成一个首页 index.md（列出所有笔记）。
-你只管在根目录用 Typora 写笔记，其余交给 deploy.bat。
+把 blog 的笔记同步到 docs/ 目录，并自动生成首页 index.md。
+
+目录结构（与 web 项目一致，方便 Typora 自动放图）：
+    posts/    <- 所有 .md 笔记写在这里
+    assets/   <- 每篇文章的图片放在 assets/<文章名>/，banner.jpg 放 assets/ 根
+    stylesheets/ <- 自定义样式
+
+你只管在 posts/ 下用 Typora 写笔记，其余交给 deploy.bat。
 """
 import os
 import shutil
+import datetime
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 DOCS = os.path.join(ROOT, "docs")
 
-# 这些文件/文件夹不当作笔记，不同步
-SKIP_FILES = {"index.md"}
-SKIP_DIRS = {"docs", ".git", "__pycache__"}
-# 首页资源文件夹，需要同步
-INDEX_ASSETS = "index.assets"
-# 自定义样式文件夹，需要同步
+POSTS = "posts"
+ASSETS = "assets"
 STYLESHEETS = "stylesheets"
 
 
@@ -25,33 +27,28 @@ def clean_docs():
     os.makedirs(DOCS)
 
 
+def copy_tree(name):
+    """把根目录下的 name 文件夹整体复制进 docs/name。"""
+    src = os.path.join(ROOT, name)
+    if os.path.exists(src):
+        shutil.copytree(src, os.path.join(DOCS, name))
+
+
 def sync():
+    # posts/ 里的 md 复制到 docs/posts/
     md_files = []
-    for name in os.listdir(ROOT):
-        path = os.path.join(ROOT, name)
-        # 复制 markdown 笔记
-        if os.path.isfile(path) and name.lower().endswith(".md") and name not in SKIP_FILES:
-            shutil.copy2(path, os.path.join(DOCS, name))
-            md_files.append(name)
-        # 复制同名 .assets 图片文件夹
-        elif os.path.isdir(path) and name.endswith(".assets") and name not in SKIP_DIRS:
-            shutil.copytree(path, os.path.join(DOCS, name))
+    posts_src = os.path.join(ROOT, POSTS)
+    if os.path.exists(posts_src):
+        os.makedirs(os.path.join(DOCS, POSTS), exist_ok=True)
+        for name in os.listdir(posts_src):
+            if name.lower().endswith(".md"):
+                shutil.copy2(os.path.join(posts_src, name),
+                             os.path.join(DOCS, POSTS, name))
+                md_files.append(name)
 
-    # 复制首页资源文件夹
-    index_assets_src = os.path.join(ROOT, INDEX_ASSETS)
-    if os.path.exists(index_assets_src):
-        index_assets_dst = os.path.join(DOCS, INDEX_ASSETS)
-        if os.path.exists(index_assets_dst):
-            shutil.rmtree(index_assets_dst)
-        shutil.copytree(index_assets_src, index_assets_dst)
-
-    # 复制自定义样式文件夹
-    stylesheets_src = os.path.join(ROOT, STYLESHEETS)
-    if os.path.exists(stylesheets_src):
-        stylesheets_dst = os.path.join(DOCS, STYLESHEETS)
-        if os.path.exists(stylesheets_dst):
-            shutil.rmtree(stylesheets_dst)
-        shutil.copytree(stylesheets_src, stylesheets_dst)
+    # assets/ 与 stylesheets/ 整体复制
+    copy_tree(ASSETS)
+    copy_tree(STYLESHEETS)
 
     return sorted(md_files)
 
@@ -64,7 +61,7 @@ def make_index(md_files):
         "  - toc",
         "---\n",
         '<div class="hero">',
-        '  <img src="index.assets/banner.jpg" alt="banner">',
+        '  <img src="assets/banner.jpg" alt="banner">',
         '  <div class="hero-text">',
         "    <h1>渗透测试学习笔记</h1>",
         "    <p>从零开始，记录我成为渗透测试工程师的学习历程</p>",
@@ -74,10 +71,11 @@ def make_index(md_files):
     ]
     for f in md_files:
         title = f[:-3]  # 去掉 .md
-        lines.append(f"- [{title}]({f})")
+        lines.append(f"- [{title}](posts/{f})")
 
     lines.append("\n---\n")
-    lines.append("*持续更新中... | Last updated: " + __import__('datetime').datetime.now().strftime('%Y-%m-%d') + "*")
+    lines.append("*持续更新中... | Last updated: "
+                 + datetime.datetime.now().strftime('%Y-%m-%d') + "*")
 
     with open(os.path.join(DOCS, "index.md"), "w", encoding="utf-8") as fp:
         fp.write("\n".join(lines) + "\n")

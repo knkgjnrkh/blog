@@ -4,7 +4,7 @@
 
 打开官网链接：[Fusion and Workstation | VMware](https://www.vmware.com/products/desktop-hypervisor/workstation-and-fusion)
 
-![image-20260701215512153](VMware%20Pro%E5%AE%89%E8%A3%85.assets/image-20260701215512153.png)
+![image-20260701215512153](../assets/VMware%20Pro%E5%AE%89%E8%A3%85/image-20260701215512153.png)
 
 点击download now
 
@@ -12,7 +12,7 @@ vmware已经被broadcom收购，需要注册一个博通账号，最好用国外
 
 登录后进到以下页面，点击**HERE**
 
-![image-20260701215837348](VMware%20Pro%E5%AE%89%E8%A3%85.assets/image-20260701215837348.png)
+![image-20260701215837348](../assets/VMware%20Pro%E5%AE%89%E8%A3%85/image-20260701215837348.png)
 
 拉到最下，选择VMware Workstation Pro。
 
@@ -22,11 +22,11 @@ vmware已经被broadcom收购，需要注册一个博通账号，最好用国外
 
 需要先点击**Terms and Conditions**，不用仔细看这个条款，直接回到原页面再勾选左边方框同意条款和协议。
 
-![image-20260701220223143](VMware%20Pro%E5%AE%89%E8%A3%85.assets/image-20260701220223143.png)
+![image-20260701220223143](../assets/VMware%20Pro%E5%AE%89%E8%A3%85/image-20260701220223143.png)
 
 然后就能点击云朵标志开始下载
 
-![image-20260701220412164](VMware%20Pro%E5%AE%89%E8%A3%85.assets/image-20260701220412164.png)
+![image-20260701220412164](../assets/VMware%20Pro%E5%AE%89%E8%A3%85/image-20260701220412164.png)
 
 如果提示
 

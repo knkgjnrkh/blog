@@ -52,31 +52,31 @@ reboot 命令 reboot 通知系统重启。
 
 重启linux系统
 
-![img](Linux.assets/4_21.png)
+![img](../assets/Linux/4_21.png)
 
 3 秒之内要按一下回车，出现如下界面
 
-![img](Linux.assets/4_22.png)
+![img](../assets/Linux/4_22.png)
 
 然后输入e
 
-![img](Linux.assets/4_23.png)
+![img](../assets/Linux/4_23.png)
 
 在 第二行最后边输入 single，有一个空格。具体方法为按向下尖头移动到第二行，按"e"进入编辑模式
 
-![img](Linux.assets/4_24.png)
+![img](../assets/Linux/4_24.png)
 
 在后边加上single 回车
 
-![img](Linux.assets/4_25.png)
+![img](../assets/Linux/4_25.png)
 
 最后按"b"启动，启动后就进入了单用户模式了
 
-![img](Linux.assets/4_26.png)
+![img](../assets/Linux/4_26.png)
 
 此时已经进入到单用户模式了，你可以更改root密码了。更密码的命令为 passwd
 
-![img](Linux.assets/4_27.png)
+![img](../assets/Linux/4_27.png)
 
 
 

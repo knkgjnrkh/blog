@@ -14,15 +14,15 @@
 
 5. 改配置：进 `dvwa\config\` 把 `config.inc.php.dist` 复制一份改名 `config.inc.php`，用记事本打开，把数据库账号密码改成 phpstudy 的（默认都是 `root`/`root`）
 
-   ![image-20260708171655733](%E6%90%AD%E5%BB%BADVWA%E9%9D%B6%E5%9C%BA.assets/image-20260708171655733.png)
+   ![image-20260708171655733](../assets/%E6%90%AD%E5%BB%BADVWA%E9%9D%B6%E5%9C%BA/image-20260708171655733.png)
 
 6. 打开小皮面板创建数据库，用户名密码和文件修改后的保持一致
 
-   ![image-20260708171906655](%E6%90%AD%E5%BB%BADVWA%E9%9D%B6%E5%9C%BA.assets/image-20260708171906655.png)
+   ![image-20260708171906655](../assets/%E6%90%AD%E5%BB%BADVWA%E9%9D%B6%E5%9C%BA/image-20260708171906655.png)
 
 7. 创建网站
 
-   ![image-20260708172017732](%E6%90%AD%E5%BB%BADVWA%E9%9D%B6%E5%9C%BA.assets/image-20260708172017732.png)
+   ![image-20260708172017732](../assets/%E6%90%AD%E5%BB%BADVWA%E9%9D%B6%E5%9C%BA/image-20260708172017732.png)
 
 8. 浏览器访问 `http://127.0.0.1/dvwa：8898`，输入账密登录，点最下面 **Create / Reset Database**
 
@@ -34,7 +34,7 @@
 
 9. 完成
 
-   ![image-20260708172601326](%E6%90%AD%E5%BB%BADVWA%E9%9D%B6%E5%9C%BA.assets/image-20260708172601326.png)
+   ![image-20260708172601326](../assets/%E6%90%AD%E5%BB%BADVWA%E9%9D%B6%E5%9C%BA/image-20260708172601326.png)
 
 
 
@@ -142,6 +142,6 @@ sudo docker run -d -p 80:80 --name dvwa vulnerables/web-dvwa
 
 登录页用 `admin` / `password`，进去后先点 **Create / Reset Database**，再把 **DVWA Security** 调到 **Low**。
 
-![image-20260708173604730](%E6%90%AD%E5%BB%BADVWA%E9%9D%B6%E5%9C%BA.assets/image-20260708173604730.png)
+![image-20260708173604730](../assets/%E6%90%AD%E5%BB%BADVWA%E9%9D%B6%E5%9C%BA/image-20260708173604730.png)
 
 完成。

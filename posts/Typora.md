@@ -12,11 +12,11 @@
 
 打开Typora官网https://typoraio.cn/，选择历史版本
 
-![image-20260701230532449](Typora.assets/image-20260701230532449.png)
+![image-20260701230532449](../assets/Typora/image-20260701230532449.png)
 
 往下找到1.9.3下载
 
-![image-20260701230747065](Typora.assets/image-20260701230747065.png)
+![image-20260701230747065](../assets/Typora/image-20260701230747065.png)
 
 下好后启动安装程序，按照提示正常安装，记住安装路径。
 
@@ -30,7 +30,7 @@ C:\Program Files\Typora\resources\page-dist\static\js
 
 用文本编辑器打开这个文件
 
-![image-20260701231252283](Typora.assets/image-20260701231252283.png)
+![image-20260701231252283](../assets/Typora/image-20260701231252283.png)
 
 Ctrl+F查找：
 
@@ -54,7 +54,7 @@ e.hasActivated="true"=="true"
 ..\Typora\resources\page-dist
 ```
 
-![image-20260701231924818](Typora.assets/image-20260701231924818.png)
+![image-20260701231924818](../assets/Typora/image-20260701231924818.png)
 
 用文本编辑器打开，Ctrl+F查找：
 
