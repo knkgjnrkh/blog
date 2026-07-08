@@ -36,6 +36,9 @@ theme:
     - search.highlight     # 搜索高亮
     - content.code.copy    # 代码一键复制
 
+extra_css:
+  - stylesheets/extra.css
+
 plugins:
   - search:
       lang:

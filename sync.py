@@ -15,6 +15,8 @@ SKIP_FILES = {"index.md"}
 SKIP_DIRS = {"docs", ".git", "__pycache__"}
 # 首页资源文件夹，需要同步
 INDEX_ASSETS = "index.assets"
+# 自定义样式文件夹，需要同步
+STYLESHEETS = "stylesheets"
 
 
 def clean_docs():
@@ -43,6 +45,14 @@ def sync():
             shutil.rmtree(index_assets_dst)
         shutil.copytree(index_assets_src, index_assets_dst)
 
+    # 复制自定义样式文件夹
+    stylesheets_src = os.path.join(ROOT, STYLESHEETS)
+    if os.path.exists(stylesheets_src):
+        stylesheets_dst = os.path.join(DOCS, STYLESHEETS)
+        if os.path.exists(stylesheets_dst):
+            shutil.rmtree(stylesheets_dst)
+        shutil.copytree(stylesheets_src, stylesheets_dst)
+
     return sorted(md_files)
 
 
@@ -51,11 +61,15 @@ def make_index(md_files):
         "---",
         "hide:",
         "  - navigation",
+        "  - toc",
         "---\n",
-        "![](index.assets/banner.jpg)\n",
-        "# 渗透测试学习笔记\n",
-        "!!! quote \"目标\"",
-        "    从零开始，记录我成为渗透测试工程师的学习历程。\n",
+        '<div class="hero">',
+        '  <img src="index.assets/banner.jpg" alt="banner">',
+        '  <div class="hero-text">',
+        "    <h1>渗透测试学习笔记</h1>",
+        "    <p>从零开始，记录我成为渗透测试工程师的学习历程</p>",
+        "  </div>",
+        "</div>\n",
         "## 📚 笔记列表\n",
     ]
     for f in md_files:
