@@ -1,0 +1,52 @@
+site_name: 渗透测试学习笔记
+site_description: 我的渗透测试学习记录
+site_author: knkgjnrkh
+site_url: https://knkgjnrkh.github.io/blog/
+
+# 文档源是 docs 子目录。你仍在 blog 根目录用 Typora 写作，
+# deploy.bat 会自动把根目录的 .md 和 .assets 同步进 docs 后再构建。
+docs_dir: docs
+# 构建输出放到 blog 目录之外，避免自我递归
+site_dir: ../blog_site
+
+# 关键：关闭目录式 URL，让 Typora 的相对图片路径（xxx.assets/图片.png）不错位
+use_directory_urls: false
+
+theme:
+  name: material
+  language: zh
+  palette:
+    # 亮色 / 暗色切换
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: 切换到暗色模式
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: 切换到亮色模式
+  features:
+    - navigation.instant   # 无刷新加载
+    - navigation.top       # 返回顶部
+    - search.suggest       # 搜索建议
+    - search.highlight     # 搜索高亮
+    - content.code.copy    # 代码一键复制
+
+plugins:
+  - search:
+      lang:
+        - zh
+
+markdown_extensions:
+  - admonition             # 提示框
+  - pymdownx.details
+  - pymdownx.superfences   # 代码块增强
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - toc:
+      permalink: true      # 标题锚点

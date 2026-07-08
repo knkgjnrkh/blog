@@ -1,0 +1,57 @@
+# -*- coding: utf-8 -*-
+"""
+把 blog 根目录里的 .md 笔记和 .assets 图片文件夹同步到 docs/ 目录，
+并自动生成一个首页 index.md（列出所有笔记）。
+你只管在根目录用 Typora 写笔记，其余交给 deploy.bat。
+"""
+import os
+import shutil
+
+ROOT = os.path.dirname(os.path.abspath(__file__))
+DOCS = os.path.join(ROOT, "docs")
+
+# 这些文件/文件夹不当作笔记，不同步
+SKIP_FILES = {"index.md"}
+SKIP_DIRS = {"docs", ".git", "__pycache__"}
+
+
+def clean_docs():
+    if os.path.exists(DOCS):
+        shutil.rmtree(DOCS)
+    os.makedirs(DOCS)
+
+
+def sync():
+    md_files = []
+    for name in os.listdir(ROOT):
+        path = os.path.join(ROOT, name)
+        # 复制 markdown 笔记
+        if os.path.isfile(path) and name.lower().endswith(".md") and name not in SKIP_FILES:
+            shutil.copy2(path, os.path.join(DOCS, name))
+            md_files.append(name)
+        # 复制同名 .assets 图片文件夹
+        elif os.path.isdir(path) and name.endswith(".assets") and name not in SKIP_DIRS:
+            shutil.copytree(path, os.path.join(DOCS, name))
+    return sorted(md_files)
+
+
+def make_index(md_files):
+    lines = [
+        "# 渗透测试学习笔记\n",
+        "记录我从零成为渗透测试工程师的学习历程。\n",
+        "## 笔记列表\n",
+    ]
+    for f in md_files:
+        title = f[:-3]  # 去掉 .md
+        lines.append(f"- [{title}]({f})")
+    with open(os.path.join(DOCS, "index.md"), "w", encoding="utf-8") as fp:
+        fp.write("\n".join(lines) + "\n")
+
+
+if __name__ == "__main__":
+    clean_docs()
+    files = sync()
+    make_index(files)
+    print(f"已同步 {len(files)} 篇笔记到 docs/")
+    for f in files:
+        print("  -", f)
