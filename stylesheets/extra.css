@@ -1,0 +1,73 @@
+/* ===== 首页全宽横幅（占页面上部约 1/3） ===== */
+.hero {
+  position: relative;
+  left: 50%;
+  width: 100vw;
+  transform: translateX(-50%);
+  height: 38vh;
+  min-height: 300px;
+  overflow: hidden;
+  margin-top: -1.2rem;   /* 抵消内容区顶部内边距，让图片贴到最上方 */
+  margin-bottom: 2.5rem;
+}
+.hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;     /* 完整铺满、不变形、按需裁切 */
+  display: block;
+}
+/* 横幅上的标题文字浮层 */
+.hero-text {
+  position: absolute;
+  left: 50%;
+  bottom: 2.2rem;
+  transform: translateX(-50%);
+  text-align: center;
+  color: #fff;
+  width: 90%;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.7);
+}
+.hero-text h1 {
+  margin: 0;
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: #fff;
+}
+.hero-text p {
+  margin: 0.5rem 0 0;
+  font-size: 1rem;
+  opacity: 0.92;
+}
+
+/* ===== 首页：顶栏透明并浮在横幅之上 ===== */
+/* 用 :has() 只在含有 hero 的首页生效，不影响笔记页 */
+body:has(.hero) .md-header {
+  position: fixed;
+  background-color: transparent !important;
+  box-shadow: none !important;
+  color: #fff;
+}
+body:has(.hero) .md-content__inner {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+/* ===== 笔记页：顶栏改成半透明磨砂白（不再是蓝条），文字转深色 ===== */
+.md-header {
+  background-color: rgba(255, 255, 255, 0.85) !important;
+  color: var(--md-default-fg-color) !important;
+  box-shadow: 0 0 0.2rem rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+/* 暗色模式下顶栏用半透明深色 */
+[data-md-color-scheme="slate"] .md-header {
+  background-color: rgba(20, 20, 30, 0.75) !important;
+  color: #fff !important;
+}
+
+/* ===== 左侧栏背景透明 ===== */
+.md-sidebar,
+.md-nav {
+  background-color: transparent !important;
+}
