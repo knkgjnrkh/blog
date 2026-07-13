@@ -4,11 +4,11 @@
 
 ### Windows版
 
-1. 去 phpstudy 官网（[xp.cn]()）下载 phpstudy_pro，安装
+1. 去 phpstudy 官网（[xp.cn](xp.cn)）下载 phpstudy_pro，安装
 
 2. 面板里启动 Apache + MySQL 两个服务，看到绿灯就是正常
 
-3. 下载 DVWA 源码（GitHub：[https:github.com/digininja/DVWA](digininja/DVWA)，点 Code → Download ZIP）
+3. 下载 DVWA 源码（GitHub：[https://github.com/digininja/DVWA](https://github.com/digininja/DVWA)，点 Code → Download ZIP）
 
 4. 解压后整个文件夹丢进 phpstudy 的网站根目录（一般是 `phpstudy_pro\WWW\`），重命名为 `dvwa`
 
@@ -20,7 +20,7 @@
 
    ![image-20260708171906655](../assets/%E6%90%AD%E5%BB%BADVWA%E9%9D%B6%E5%9C%BA/image-20260708171906655.png)
 
-7. 创建网站
+7. 创建网站，填写域名，修改端口号，其他不动，确定后重启服务
 
    ![image-20260708172017732](../assets/%E6%90%AD%E5%BB%BADVWA%E9%9D%B6%E5%9C%BA/image-20260708172017732.png)
 
@@ -30,9 +30,23 @@
    >
    > 如果出现初始化问题参考[如何搭建 DVWA 靶场保姆级教程（附链接）_dvwa靶场搭建-CSDN博客](https://blog.csdn.net/2302_82189125/article/details/135834194)
 
-   
+   补充：如果提示（这是dvwa和mysql版本的语法兼容性问题）
 
-9. 完成
+   ```
+   Could not add role column to users table SQL: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'IF NOT EXISTS role VARCHAR(20) DEFAULT 'user'' at line 1。
+   ```
+
+   找到这个文件
+
+   ![image-20260713174751698](../assets/%E6%90%AD%E5%BB%BADVWA%E9%9D%B6%E5%9C%BA/image-20260713174751698.png)
+
+   搜索`IF NOT EXISTS`，将其删除保存
+
+   刷新浏览器再次执行初始化。
+
+9. 重新打开登录页面，登录
+
+10. 完成
 
    ![image-20260708172601326](../assets/%E6%90%AD%E5%BB%BADVWA%E9%9D%B6%E5%9C%BA/image-20260708172601326.png)
 
@@ -93,6 +107,16 @@ sudo docker ps
 ```
 
 能看到名为 `dvwa` 的容器、状态 `Up` 就对了。
+
+容器管理常用命令:
+
+| 命令                | 作用                   |
+| ------------------- | ---------------------- |
+| `docker ps`         | 看正在运行的容器       |
+| `docker ps -a`      | 看所有容器(含已停止的) |
+| `docker start dvwa` | 启动已停止的容器       |
+| `docker stop dvwa`  | 停止容器               |
+| `docker rm -f dvwa` | 强制删除(运行中也能删) |
 
 #### 4、配镜像加速源
 
