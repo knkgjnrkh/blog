@@ -12,13 +12,13 @@
         <meta name="author" content="knkgjnrkh">
       
       
-        <link rel="canonical" href="https://knkgjnrkh.github.io/blog/posts/VMware%20Pro%E5%AE%89%E8%A3%85.html">
+        <link rel="canonical" href="https://knkgjnrkh.github.io/blog/posts/DVWA%20Brute%20Force.html">
       
       
-        <link rel="prev" href="Typora.html">
+        <link rel="prev" href="../index.html">
       
       
-        <link rel="next" href="msf%E6%9E%84%E5%BB%BA%E6%9C%A8%E9%A9%AC.html">
+        <link rel="next" href="HTTP.html">
       
       
         
@@ -29,7 +29,7 @@
     
     
       
-        <title>VMware Pro下载与安装 - 渗透测试学习笔记</title>
+        <title>DVWA Brute Force(low) - 渗透测试学习笔记</title>
       
     
     
@@ -82,7 +82,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#vmware-pro" class="md-skip">
+        <a href="#dvwa-brute-forcelow" class="md-skip">
           跳转至
         </a>
       
@@ -118,7 +118,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              VMware Pro下载与安装
+              DVWA Brute Force(low)
             
           </span>
         </div>
@@ -315,10 +315,19 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="DVWA%20Brute%20Force.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="DVWA%20Brute%20Force.html" class="md-nav__link md-nav__link--active">
         
   
   
@@ -334,6 +343,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -455,19 +465,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="VMware%20Pro%E5%AE%89%E8%A3%85.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="VMware%20Pro%E5%AE%89%E8%A3%85.html" class="md-nav__link">
         
   
   
@@ -483,7 +484,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -587,26 +587,18 @@
 
 
 
-<h1 id="vmware-pro">VMware Pro下载与安装<a class="headerlink" href="#vmware-pro" title="Permanent link">&para;</a></h1>
-<p>打开官网链接：<a href="https://www.vmware.com/products/desktop-hypervisor/workstation-and-fusion">Fusion and Workstation | VMware</a></p>
-<p><img alt="image-20260701215512153" src="../assets/VMware%20Pro%E5%AE%89%E8%A3%85/image-20260701215512153.png" /></p>
-<p>点击download now</p>
-<p>vmware已经被broadcom收购，需要注册一个博通账号，最好用国外域名的邮箱，后面会讲为什么。</p>
-<p>登录后进到以下页面，点击<strong>HERE</strong></p>
-<p><img alt="image-20260701215837348" src="../assets/VMware%20Pro%E5%AE%89%E8%A3%85/image-20260701215837348.png" /></p>
-<p>拉到最下，选择VMware Workstation Pro。</p>
-<p><img alt="dda5b31a-af37-4e62-988c-334da15a211e" src="C:\Users\lj\Documents\xwechat_files\wxid_wt686pdb3hl222_eb2a\temp\InputTemp\dda5b31a-af37-4e62-988c-334da15a211e.png" /></p>
-<p>选择需要的版本(这里以17.6版本为例)</p>
-<p>需要先点击<strong>Terms and Conditions</strong>，不用仔细看这个条款，直接回到原页面再勾选左边方框同意条款和协议。</p>
-<p><img alt="image-20260701220223143" src="../assets/VMware%20Pro%E5%AE%89%E8%A3%85/image-20260701220223143.png" /></p>
-<p>然后就能点击云朵标志开始下载</p>
-<p><img alt="image-20260701220412164" src="../assets/VMware%20Pro%E5%AE%89%E8%A3%85/image-20260701220412164.png" /></p>
-<p>如果提示</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Account verification is Pending. Please try after some time
-</code></pre></div>
-<p>是因为账户原因，更换一个邮箱注册新的账户(最好是外国邮箱)再次尝试。</p>
-<p>下载成功后打开安装程序</p>
-<p>根据提示一步步安装</p>
+<h1 id="dvwa-brute-forcelow">DVWA Brute Force(low)<a class="headerlink" href="#dvwa-brute-forcelow" title="Permanent link">&para;</a></h1>
+<p>通过burpsuite内嵌浏览器打开dvwa靶场，开启拦截。</p>
+<p>随机输入账号密码并提交。</p>
+<p><img alt="image-20260712225657929" src="../assets/DVWA%20Brute%20Force/image-20260712225657929.png" /></p>
+<p>回到bp，将拦截到的请求右键发送到攻击器。</p>
+<p>来到攻击器，将username和password对应上传的参数“<strong>admin</strong>”和“<strong>password</strong>”添加payload，再将攻击模式改成<strong>集群炸弹模式</strong>。</p>
+<p><img alt="image-20260712230015553" src="../assets/DVWA%20Brute%20Force/image-20260712230015553.png" /></p>
+<p>payload选择提前创建好的字典，开始攻击。</p>
+<p><img alt="image-20260712230155141" src="../assets/DVWA%20Brute%20Force/image-20260712230155141.png" /></p>
+<p>长度不同的这个响应就是正确账密。</p>
+<p><img alt="image-20260712230325825" src="../assets/DVWA%20Brute%20Force/image-20260712230325825.png" /></p>
+<p>验证正确。</p>
 
 
 
