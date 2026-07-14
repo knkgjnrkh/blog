@@ -2,38 +2,42 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://knkgjnrkh.github.io/blog/index.html</loc>
-         <lastmod>2026-07-13</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://knkgjnrkh.github.io/blog/posts/DVWA%20Brute%20Force.html</loc>
-         <lastmod>2026-07-13</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://knkgjnrkh.github.io/blog/posts/HTTP.html</loc>
-         <lastmod>2026-07-13</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://knkgjnrkh.github.io/blog/posts/Kali%20Linux%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%8B%E8%BD%BD%E4%B8%8E%E5%AE%89%E8%A3%85.html</loc>
-         <lastmod>2026-07-13</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://knkgjnrkh.github.io/blog/posts/Linux.html</loc>
-         <lastmod>2026-07-13</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://knkgjnrkh.github.io/blog/posts/Typora.html</loc>
-         <lastmod>2026-07-13</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://knkgjnrkh.github.io/blog/posts/VMware%20Pro%E5%AE%89%E8%A3%85.html</loc>
-         <lastmod>2026-07-13</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://knkgjnrkh.github.io/blog/posts/msf%E6%9E%84%E5%BB%BA%E6%9C%A8%E9%A9%AC.html</loc>
-         <lastmod>2026-07-13</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://knkgjnrkh.github.io/blog/posts/%E6%90%AD%E5%BB%BADVWA%E9%9D%B6%E5%9C%BA.html</loc>
-         <lastmod>2026-07-13</lastmod>
+         <lastmod>2026-07-14</lastmod>
+    </url>
+    <url>
+         <loc>https://knkgjnrkh.github.io/blog/posts/%E6%90%AD%E5%BB%BAsqli-labs%E9%9D%B6%E5%9C%BA%28win%29.html</loc>
+         <lastmod>2026-07-14</lastmod>
     </url>
 </urlset>
