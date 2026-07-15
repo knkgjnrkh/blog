@@ -71,3 +71,28 @@ body:has(.hero) .md-content__inner {
 .md-nav {
   background-color: transparent !important;
 }
+
+/* ===== 去掉左侧栏的蓝色背景和图标 ===== */
+/* 去掉导航项的背景色和悬停效果 */
+.md-nav__item .md-nav__link--active,
+.md-nav__item .md-nav__link:hover {
+  background-color: transparent !important;
+  color: var(--md-default-fg-color) !important;
+}
+
+/* 去掉所有导航链接的图标 */
+.md-nav__link::before,
+.md-nav__item--active > .md-nav__link::before {
+  display: none !important;
+}
+
+/* 去掉导航项前面的圆点/图标 */
+.md-nav__icon {
+  display: none !important;
+}
+
+/* 暗色模式下也保持透明 */
+[data-md-color-scheme="slate"] .md-nav__item .md-nav__link--active,
+[data-md-color-scheme="slate"] .md-nav__item .md-nav__link:hover {
+  background-color: transparent !important;
+}
